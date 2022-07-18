@@ -20,8 +20,8 @@ let score = 0;
 let khoangcachhaiong = 140;
 let khoangcachdenongduoi;
 let bird = {
-    x: hinhnenchinh.width/5,
-    y: hinhnenchinh.height / 2,
+    x: 100,
+    y: 50 ,
 }
 let ong = [];
 ong[0] = {
@@ -33,7 +33,7 @@ ong[0] = {
 function run() {
     context.drawImage(hinhnenchinh, 0, 0);
     context.drawImage(birding, bird.x, bird.y);
-    // console.log('ong.leng === ', ong.length)
+    console.log('ong.leng === ', ong.length)
     for (let i = 0; i < ong.length; i++) {
         // console.log('i ====== ', i)
         khoangcachdenongduoi = ongtren.height + khoangcachhaiong;
@@ -41,32 +41,32 @@ function run() {
         context.drawImage(ongduoi, ong[i].x, ong[i].y + khoangcachdenongduoi);
         ong[i].x -= 5;
 
-        if (ong[i].x == canvas.width / 2) {
+        if (ong[i].x === canvas.width / 2) {
             ong.push({
                 x: canvas.width,
                 y: Math.floor(Math.random() * ongtren.height) - ongtren.height,
             })
 
         }
-        if (ong[i].x == 0) {
+        if (ong[i].x === 0) {
             ong.splice(0, 1,);
             audio.play()
             score++;
         }
+        // if(ong[i].x==bird.x)
 
         // console.log('ong.x ------------------------------', ong[i].x)
         // console.log('bird.x ========', bird.x)
-        // if (ong[i].x === 0) {
         //
         // }
         if (bird.y + birding.height == canvas.height ||
             bird.x + birding.width >= ong[i].x && ong[i].x <= ong[i].x + ongtren.width
-            && (bird.y <= ong[i].y + ongtren.height ||
+             && (bird.y <= ong[i].y + ongtren.height ||
                 bird.y + birding.height >= ong[i].y + khoangcachdenongduoi)
         ) {
-            amthanhchet.play()
-            meme.play()
-            return;
+             amthanhchet.play()
+            // meme.play()
+             return;
         }
     }
     scoreshow.innerHTML = "Điểm :" + score;
@@ -84,4 +84,3 @@ document.addEventListener("keydown", function (e) {
 
     }amthanhbay.play()
 })
-
