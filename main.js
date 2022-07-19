@@ -20,8 +20,8 @@ let score = 0;
 let khoangcachhaiong = 140;
 let khoangcachdenongduoi;
 let bird = {
-    x: 100,
-    y: 50 ,
+    x: 0,
+    y: 0 ,
 }
 let ong = [];
 ong[0] = {
